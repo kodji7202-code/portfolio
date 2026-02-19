@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* Clash Display Font - loaded via @font-face from Fontshare */
+@font-face {
+  font-family: "Clash Display";
+  src: url("https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #F5F0E8;
+  --primary: #C9A84C;
+  --primary-dark: #16a34a;
+  --secondary: #6b7280;
+  --accent: #C9A84C;
+  --card-bg: #0a0a0a;
+  --card-border: #262626;
+  
+  /* Font variables */
+  --font-clash-display: "Clash Display", sans-serif;
+  --font-space-grotesk: var(--font-space-grotesk);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --font-sans: var(--font-inter);
+  --font-poppins: var(--font-poppins);
+  --font-clash-display: var(--font-clash-display);
+  --font-space-grotesk: var(--font-space-grotesk);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  scroll-behavior: smooth;
+  cursor: default;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Smooth animations */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: ease;
+  transition-duration: 150ms;
+}
+
+/* Section styling */
+section {
+  position: relative;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+}
+
+/* Selection color */
+::selection {
+  background: var(--primary);
+  color: var(--background);
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Disable text selection on interactive elements */
+button, 
+a, 
+nav * {
+  -webkit-tap-highlight-color: transparent;
+}
