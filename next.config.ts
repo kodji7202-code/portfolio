@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import type { Configuration } from "webpack";
 
 const nextConfig: NextConfig = {
   images: {
@@ -24,19 +23,8 @@ const nextConfig: NextConfig = {
   },
   // Transpile sanity packages
   transpilePackages: ["sanity", "@sanity/ui", "@sanity/icons"],
-  webpack: (config: Configuration, { isServer }: { isServer: boolean }) => {
-    // Handle styled-components in Sanity
-    if (!isServer) {
-      config.resolve = config.resolve || {};
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-      };
-    }
-    return config;
-  },
+  // Turbopack configuration (Next.js 16 default bundler)
+  turbopack: {},
 };
 
 export default nextConfig;
