@@ -208,10 +208,7 @@ export default function Header() {
     <>
       <header
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500`}
-        style={{
-          padding: "20px 48px",
-        }}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-5 py-5 md:px-12`}
       >
         {/* Background Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -322,7 +319,7 @@ export default function Header() {
             {/* Desktop Navigation */}
             <div
               ref={navRef}
-              className="flex items-center gap-6 px-6 py-3 rounded-full"
+              className="hidden md:flex items-center gap-6 px-6 py-3 rounded-full"
               style={{
                 background: isScrolled 
                   ? "rgba(255,255,255,0.05)" 
@@ -468,13 +465,13 @@ export default function Header() {
             {/* Mobile Hamburger */}
             <button
               ref={hamburgerRef}
-              className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 cursor-pointer"
+              className="md:hidden relative z-[110] w-10 h-10 flex flex-col items-center justify-center gap-1.5 cursor-pointer"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              <span className="hamburger-line w-6 h-0.5 bg-[#F5F0E8] block" />
-              <span className="hamburger-line w-6 h-0.5 bg-[#F5F0E8] block" />
-              <span className="hamburger-line w-6 h-0.5 bg-[#F5F0E8] block" />
+              <span className="hamburger-line w-6 h-0.5 bg-[#F5F0E8] block transition-colors duration-300" />
+              <span className="hamburger-line w-6 h-0.5 bg-[#F5F0E8] block transition-colors duration-300" />
+              <span className="hamburger-line w-6 h-0.5 bg-[#F5F0E8] block transition-colors duration-300" />
             </button>
           </div>
         </div>
