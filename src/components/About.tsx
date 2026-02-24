@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Code2, 
-  Database, 
-  FileType, 
-  Layout, 
-  Server, 
-  Box 
+  Code2,
+  Database,
+  FileType,
+  Layout,
+  Server,
+  Box
 } from "lucide-react";
 import portfolioData from "@/data/portfolio";
 
@@ -26,8 +26,8 @@ export default function About() {
   const { about, skills } = portfolioData;
 
   return (
-    <section 
-      id="about" 
+    <section
+      id="about"
       className="py-20 relative overflow-hidden"
       style={{
         background: "#000000",
@@ -57,7 +57,7 @@ export default function About() {
             ease: "easeInOut",
           }}
         />
-        
+
         {/* Large glowing orb 2 - Purple */}
         <motion.div
           className="absolute rounded-full"
@@ -81,7 +81,7 @@ export default function About() {
             delay: 5,
           }}
         />
-        
+
         {/* Large glowing orb 3 - Pink */}
         <motion.div
           className="absolute rounded-full"
@@ -105,7 +105,7 @@ export default function About() {
             delay: 10,
           }}
         />
-        
+
         {/* Animated Grid Pattern - Same as Hero */}
         <motion.div
           className="absolute inset-0"
@@ -136,7 +136,7 @@ export default function About() {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <h2 
+          <h2
             className="text-5xl md:text-7xl font-bold text-white relative inline-block"
             style={{
               fontFamily: "var(--font-clash-display), sans-serif",
@@ -180,14 +180,14 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h3 
+            <h3
               className="text-2xl md:text-3xl font-medium text-white mb-6"
               style={{
                 fontFamily: "var(--font-clash-display), sans-serif",
               }}
             >
               Building digital{" "}
-              <span 
+              <span
                 className="relative"
                 style={{
                   background: "linear-gradient(135deg, #ec4899, #a855f7)",
@@ -202,13 +202,13 @@ export default function About() {
             <p className="text-white/60 leading-relaxed text-lg mb-8">
               {about.bio}
             </p>
-            
+
             {/* Stats */}
             <div className="flex gap-8">
               {[
-                { number: "5+", label: "Years Exp." },
-                { number: "50+", label: "Projects" },
-                { number: "30+", label: "Clients" },
+                { number: "2+", label: "Years Exp." },
+                { number: "10+", label: "Projects" },
+                { number: "7+", label: "Clients" },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -218,7 +218,7 @@ export default function About() {
                   viewport={{ once: true }}
                   className="text-center"
                 >
-                  <div 
+                  <div
                     className="text-3xl font-bold"
                     style={{
                       background: "linear-gradient(135deg, #ec4899, #a855f7)",
@@ -243,7 +243,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h4 
+            <h4
               className="text-sm font-medium text-white/60 mb-6 uppercase tracking-[0.2em]"
               style={{
                 fontFamily: "var(--font-space-grotesk), sans-serif",
@@ -253,9 +253,9 @@ export default function About() {
             </h4>
             <div className="grid grid-cols-2 gap-4">
               {skills.map((skill, index) => (
-                <SkillCard 
-                  key={skill.name} 
-                  skill={skill} 
+                <SkillCard
+                  key={skill.name}
+                  skill={skill}
                   index={index}
                   icon={skillIcons[skill.icon] || <Code2 className="w-5 h-5" />}
                 />
@@ -268,114 +268,36 @@ export default function About() {
   );
 }
 
-// Skill Card Component with 3D Hover Effect
-function SkillCard({ 
-  skill, 
+// Skill Card Component
+function SkillCard({
+  skill,
   index,
-  icon 
-}: { 
+  icon
+}: {
   skill: { name: string; icon: string };
   index: number;
   icon: React.ReactNode;
 }) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
       viewport={{ once: true }}
-      className="relative"
-      style={{
-        perspective: "1000px",
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="relative p-4 rounded-xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-pink-500/30 transition-all duration-300 group"
+      whileHover={{ y: -5 }}
     >
-      {/* 3D Shadow */}
-      <motion.div
-        className="absolute inset-0 rounded-xl"
-        style={{
-          background: "linear-gradient(135deg, rgba(236,72,153,0.3), rgba(168,85,247,0.3))",
-          transform: "translateZ(-20px)",
-          filter: "blur(10px)",
-          opacity: isHovered ? 0.6 : 0,
-        }}
-        animate={{
-          scale: isHovered ? 1.02 : 1,
-        }}
-        transition={{ duration: 0.2 }}
-      />
-      
-      {/* Main Card */}
-      <motion.div
-        className="relative p-4 rounded-xl border"
-        style={{
-          background: isHovered 
-            ? "linear-gradient(135deg, rgba(236,72,153,0.1), rgba(168,85,247,0.1))"
-            : "rgba(255,255,255,0.02)",
-          borderColor: isHovered 
-            ? "rgba(236,72,153,0.5)"
-            : "rgba(255,255,255,0.1)",
-          transform: isHovered ? "translateZ(15px)" : "translateZ(0px)",
-          transformStyle: "preserve-3d",
-        }}
-        animate={{
-          boxShadow: isHovered 
-            ? "0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(236,72,153,0.2)"
-            : "none",
-        }}
-        transition={{ duration: 0.3 }}
-      >
-        {/* Floating Icon */}
-        <motion.div
-          className="mb-3"
-          animate={{
-            y: isHovered ? -5 : 0,
-            scale: isHovered ? 1.1 : 1,
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <div 
-            className="w-10 h-10 rounded-lg flex items-center justify-center"
-            style={{
-              background: "linear-gradient(135deg, rgba(236,72,153,0.2), rgba(168,85,247,0.2))",
-              border: "1px solid rgba(236,72,153,0.3)",
-            }}
-          >
-            <span className="text-white">
-              {icon}
-            </span>
-          </div>
-        </motion.div>
-        
-        {/* Skill Name */}
-        <motion.span
-          className="text-white font-medium block"
-          animate={{
-            color: isHovered ? "#ffffff" : "rgba(255,255,255,0.8)",
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          {skill.name}
-        </motion.span>
-        
-        {/* Shine Effect */}
-        <motion.div
-          className="absolute inset-0 rounded-xl pointer-events-none overflow-hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.05) 100%)",
-            }}
-          />
-        </motion.div>
-      </motion.div>
+      <div className="mb-3">
+        <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-white/5 group-hover:from-pink-500/20 group-hover:to-purple-500/20 group-hover:border-pink-500/30 transition-all duration-300">
+          <span className="text-white/60 group-hover:text-pink-400 transition-colors duration-300">
+            {icon}
+          </span>
+        </div>
+      </div>
+
+      <span className="text-white/80 font-medium block group-hover:text-white transition-colors duration-300">
+        {skill.name}
+      </span>
     </motion.div>
   );
 }
