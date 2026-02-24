@@ -60,7 +60,7 @@ export const portfolioData = {
 
   // About Section
   about: {
-    bio: "I'm a passionate full-stack developer with 5+ years of experience building modern web applications. I love turning complex problems into simple, beautiful solutions. When I'm not coding, you can find me exploring new technologies or contributing to open-source projects.",
+    bio: "I'm a passionate full-stack developer with 2 years of experience building modern web applications. I love turning complex problems into simple, beautiful solutions. When I'm not coding, you can find me exploring new technologies or contributing to open-source projects.",
     profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
   },
 

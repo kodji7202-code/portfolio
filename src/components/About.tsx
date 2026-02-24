@@ -206,9 +206,9 @@ export default function About() {
             {/* Stats */}
             <div className="flex gap-8">
               {[
-                { number: "5+", label: "Years Exp." },
-                { number: "50+", label: "Projects" },
-                { number: "30+", label: "Clients" },
+                { number: "2+", label: "Years Exp." },
+                { number: "5", label: "Projects" },
+                { number: "4", label: "Clients" },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
